@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "demo": {
+      "transport": "stdio",
+      "command": "${PYTHON}",
+      "args": ["-m", "mcp_agent.servers.demo"],
+      "env": {"PYTHONIOENCODING": "utf-8"}
+    },
+    "database": {
+      "transport": "stdio",
+      "command": "${PYTHON}",
+      "args": ["-m", "mcp_agent.servers.database"],
+      "env": {"PYTHONIOENCODING": "utf-8"},
+      "inherit_env": [
+        "DB_ENGINE", "SQLITE_PATH", "MYSQL_HOST", "MYSQL_PORT", "MYSQL_DATABASE",
+        "MYSQL_USER", "MYSQL_PASSWORD", "MYSQL_SSL_CA", "DB_QUERY_TIMEOUT_SECONDS", "DB_MAX_ROWS"
+      ]
+    },
+    "web": {
+      "transport": "stdio",
+      "command": "${PYTHON}",
+      "args": ["-m", "mcp_agent.servers.web_search"],
+      "env": {"PYTHONIOENCODING": "utf-8"},
+      "inherit_env": [
+        "WEB_SEARCH_PROVIDER", "TAVILY_API_KEY", "WEB_SEARCH_TIMEOUT_SECONDS",
+        "WEB_SEARCH_MAX_RESULTS", "WEB_SEARCH_REGION", "WEB_SEARCH_BACKEND"
+      ]
+    }
+  }
+}

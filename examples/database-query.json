@@ -1,0 +1,4 @@
+{
+  "sql": "SELECT category, COUNT(*) AS product_count, SUM(stock) AS total_stock FROM products GROUP BY category ORDER BY category",
+  "max_rows": 20
+}
